@@ -1,0 +1,21 @@
+# Local package: builds from the checkout two levels up.
+pkgname=kded-vpntotp
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="KDE background service that fills NetworkManager VPN passwords with password + TOTP code from KWallet"
+arch=(x86_64)
+license=(MIT)
+depends=(qt6-base kcoreaddons kdbusaddons kwallet networkmanager-qt networkmanager)
+makedepends=(cmake extra-cmake-modules)
+
+build() {
+    cmake -B build -S "$startdir/../.." \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_TESTING=OFF
+    cmake --build build
+}
+
+package() {
+    DESTDIR="$pkgdir" cmake --install build
+}

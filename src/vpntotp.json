@@ -1,0 +1,9 @@
+{
+    "KPlugin": {
+        "Name": "VPN TOTP Autofill",
+        "Description": "Answers NetworkManager VPN password requests with the stored password plus the current TOTP code from KWallet"
+    },
+    "X-KDE-Kded-autoload": true,
+    "X-KDE-Kded-load-on-demand": false,
+    "X-KDE-Kded-phase": 0
+}
